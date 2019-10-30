@@ -1,0 +1,20 @@
+{
+  "name": "self-driving-car-serverapp",
+  "version": "1.0.0",
+  "description": "The main server app for data transmission (Web Sockets) for Self Driving Car",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Saurabh",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "heroku": "^7.33.3",
+    "socket.io": "^2.3.0"
+  },
+  "engines": {
+    "node": "^10"
+  }
+}
