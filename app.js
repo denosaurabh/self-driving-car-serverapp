@@ -4,6 +4,12 @@ const cors = require('cors');
 app.use(cors());
 app.use('*', cors())
 
+app.get('/', (req, res) => {
+    res.status(200).json({
+        status: 'success'
+    })
+})
+
 const port = 5000;
 
 const server = app.listen(port, () => {
