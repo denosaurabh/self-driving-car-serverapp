@@ -21,28 +21,15 @@ const server = app.listen(port, () => {
 
 const io = require("socket.io").listen(server);
 
-// Emiting and Waiting for Evenst for Car
-
+// Emiting and Waiting for Events for Car
 io.on("connection", socket => {
-  console.log("Something get Connected");
-
-  socket.on("straightmove", data => {
-    console.log("Sending data to car to move forward");
-    io.emit("forward", "forward");
-  });
-
-  socket.on("backmove", data => {
-    console.log("Sending data to car to move backward");
-    io.emit("backward", "backward");
-  });
-
-  socket.on("leftmove", data => {
-    console.log("Sending data to car to move left");
-    io.emit("left", "left");
-  });
-
-  socket.on("rightmove", data => {
-    console.log("Sending data to car to move right");
-    io.emit("right", "right");
+  // Getting and Sending small data about Device
+  const handshakeData = socket.request;
+  let info = `device:${handshakeData._query["device"]} ID: ${socket.id}`;
+  console.log(info)
+  
+  socket.on("movement", data => {
+    console.log(`Sending data to Car to move ${data}`);
+    io.emit("moveCar", data);
   });
 });
